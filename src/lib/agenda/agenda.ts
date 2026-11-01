@@ -5,6 +5,7 @@ import {
   INTERVALO_MINUTOS,
   agoraNoRio,
   combinarServicos,
+  type Extra,
   diaDaSemana,
   minutosParaHora,
   ultimoDiaReservavel,
@@ -23,8 +24,8 @@ async function liberarVencidas() {
   await db.query(`UPDATE reservas SET status = 'expirada' WHERE status = 'pendente' AND expira_em < now()`);
 }
 
-export async function horariosLivres(data: string, servicoIds: string[]) {
-  const combinacao = combinarServicos(servicoIds);
+export async function horariosLivres(data: string, servicoIds: string[], extras: Extra[] = []) {
+  const combinacao = combinarServicos(servicoIds, extras);
   const janela = funcionamento[diaDaSemana(data)];
   const hoje = agoraNoRio().slice(0, 10);
   if (!combinacao || !janela || data < hoje || data > ultimoDiaReservavel()) return [];
@@ -55,28 +56,29 @@ export async function horariosLivres(data: string, servicoIds: string[]) {
   return livres;
 }
 
-export async function diasDisponiveis(mes: string, servicoIds: string[]) {
+export async function diasDisponiveis(mes: string, servicoIds: string[], extras: Extra[] = []) {
   const [ano, numero] = mes.split("-").map(Number);
   const total = new Date(Date.UTC(ano, numero, 0)).getUTCDate();
   const hoje = agoraNoRio().slice(0, 10);
   const dias = Array.from({ length: total }, (_, i) => `${mes}-${String(i + 1).padStart(2, "0")}`).filter(
     (d) => funcionamento[diaDaSemana(d)] && d >= hoje && d <= ultimoDiaReservavel(),
   );
-  if (!combinarServicos(servicoIds)) return dias;
+  if (!combinarServicos(servicoIds, extras)) return dias;
 
-  const livres = await Promise.all(dias.map((d) => horariosLivres(d, servicoIds)));
+  const livres = await Promise.all(dias.map((d) => horariosLivres(d, servicoIds, extras)));
   return dias.filter((_, i) => livres[i].length > 0);
 }
 
 export async function criarReserva(entrada: {
   servicoIds: string[];
+  extras: Extra[];
   data: string;
   hora: string;
   nome: string;
   telefone: string;
 }) {
-  const combinacao = combinarServicos(entrada.servicoIds);
-  if (!combinacao || !(await horariosLivres(entrada.data, entrada.servicoIds)).includes(entrada.hora)) {
+  const combinacao = combinarServicos(entrada.servicoIds, entrada.extras);
+  if (!combinacao || !(await horariosLivres(entrada.data, entrada.servicoIds, entrada.extras)).includes(entrada.hora)) {
     throw new HorarioIndisponivel();
   }
 

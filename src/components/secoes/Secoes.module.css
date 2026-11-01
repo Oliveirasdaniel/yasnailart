@@ -1,5 +1,4 @@
 .portfolio,
-.artista,
 .servicos,
 .pressOn,
 .contato,
@@ -8,7 +7,6 @@
 }
 
 .portfolio h2,
-.artista h2,
 .servicos h2,
 .pressOn h2,
 .contato h2 {
@@ -19,7 +17,6 @@
 }
 
 .portfolio small,
-.artista small,
 .servicos small,
 .pressOn small,
 .contato small,
@@ -32,7 +29,6 @@
 }
 
 .portfolio b,
-.artista b,
 .servicos b,
 .pressOn b,
 .contato b,
@@ -41,7 +37,6 @@
   font-weight: 400;
 }
 
-.artista i,
 .rodape i {
   display: block;
   color: var(--carmim);
@@ -104,27 +99,6 @@
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-}
-
-.artista {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(24px, 5vw, 64px);
-  align-items: center;
-}
-
-.artista img {
-  width: 100%;
-  border-radius: 22px;
-}
-
-.artista h2 {
-  font-size: clamp(48px, 7vw, 100px);
-}
-
-.artista p {
-  font-size: 19px;
-  line-height: 1.5;
 }
 
 .servicos {
@@ -217,6 +191,40 @@
   font-weight: 400;
   font-stretch: 100%;
   text-transform: none;
+}
+
+.catalogo {
+  margin-bottom: 20px;
+}
+
+.artes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.artes li {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-left: 14px;
+  border-radius: 999px;
+  background: var(--ameixa);
+  color: var(--creme);
+  font-weight: 700;
+}
+
+.artes button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  color: var(--creme);
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .dica {
@@ -354,7 +362,7 @@
   display: grid;
   grid-template-columns: 1fr 52px 52px;
   gap: 8px;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) 72px;
   background: var(--creme);
   box-shadow: 0 -4px 14px rgb(83 55 70 / 0.2);
 }
@@ -451,7 +459,6 @@
   }
 
   .categorias,
-  .artista,
   .contato {
     grid-template-columns: 1fr;
   }

@@ -1,26 +1,35 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import { contato, servicos } from "@/content/site";
-import { combinarServicos, formatarDuracao, idDoServico } from "@/lib/agenda/regras";
+import { formatarDuracao, idDoServico, itensDoCatalogo } from "@/lib/agenda/regras";
 import { Agendamento } from "./Agendamento";
+import { CatalogoNailArt } from "./CatalogoNailArt";
+import { useReserva } from "./ContextoReserva";
 import styles from "./Secoes.module.css";
 
 const moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 
 export function Reserva() {
-  const [selecionados, setSelecionados] = useState<string[]>([]);
-  const combinacao = useMemo(() => combinarServicos(selecionados), [selecionados]);
-
-  function alternar(id: string) {
-    setSelecionados((atual) => (atual.includes(id) ? atual.filter((x) => x !== id) : [...atual, id]));
-  }
+  const { selecionados, alternarServico: alternar, combinacao, extras, definirQuantidade } = useReserva();
 
   return (
     <>
       <section id="servicos" className={styles.servicos}>
         <h2><small>monte seu</small> <b>horário</b></h2>
         <p className={styles.dica}>Marque um ou mais serviços. O tempo e o valor somam sozinhos.</p>
+        <div className={styles.catalogo}>
+          <CatalogoNailArt />
+          {extras.length > 0 && (
+            <ul className={styles.artes}>
+              {extras.map(([id, quantidade]) => (
+                <li key={id}>
+                  <span>{itensDoCatalogo.find((i) => i.id === id)?.nome}{quantidade > 1 ? ` x${quantidade}` : ""}</span>
+                  <button type="button" aria-label="Remover" onClick={() => definirQuantidade(id, 0)}>×</button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
         <div className={styles.categorias}>
           {servicos.map((grupo, i) => (
             <details key={grupo.categoria} open={i === 0}>
@@ -60,14 +69,16 @@ export function Reserva() {
         <div className={styles.resumo} aria-live="polite">
           <p>
             {combinacao
-              ? `${combinacao.ids.length} ${combinacao.ids.length > 1 ? "serviços" : "serviço"} · ${formatarDuracao(combinacao.minutos)} · ${moeda.format(combinacao.preco)}`
-              : "Nenhum serviço marcado"}
+              ? `${combinacao.ids.length} ${combinacao.ids.length > 1 ? "serviços" : "serviço"}${extras.length ? ` + ${extras.length} nail art` : ""} · ${formatarDuracao(combinacao.minutos)} · ${moeda.format(combinacao.preco)}`
+              : extras.length
+                ? "Marque também o serviço base"
+                : "Nenhum serviço marcado"}
           </p>
           <a className={styles.botao} href="#agendar">Escolher horário</a>
         </div>
       </section>
 
-      <Agendamento selecionados={selecionados} />
+      <Agendamento />
     </>
   );
 }

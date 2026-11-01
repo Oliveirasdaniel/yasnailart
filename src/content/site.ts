@@ -17,6 +17,70 @@ export const horarios = [
   { dia: "Sábado", horario: "10:00 - 18:00" },
 ];
 
+export type UnidadeArte = "fixo" | "unha" | "peca";
+type ItemArte = { nome: string; preco: number; unidade: UnidadeArte; aPartirDe?: boolean };
+
+export const catalogoNailArt: { nivel: string; faixa: string; itens: ItemArte[] }[] = [
+  {
+    nivel: "Simples",
+    faixa: "Valores entre R$ 20 e R$ 25",
+    itens: [
+      { nome: "Magnético", preco: 15, unidade: "fixo" },
+      { nome: "Pó cromado", preco: 10, unidade: "fixo" },
+      { nome: "Francesinha", preco: 10, unidade: "fixo" },
+      { nome: "Efeito blooming", preco: 2.5, unidade: "unha" },
+    ],
+  },
+  {
+    nivel: "Médio",
+    faixa: "Valores entre R$ 30 e R$ 55",
+    itens: [
+      { nome: "Aura nail", preco: 2.5, unidade: "unha" },
+      { nome: "Animal print", preco: 3, unidade: "unha" },
+      { nome: "Design geométrico", preco: 3.5, unidade: "unha" },
+      { nome: "Relevo em gel", preco: 1.5, unidade: "unha" },
+      { nome: "Lettering", preco: 5, unidade: "unha" },
+    ],
+  },
+  {
+    nivel: "Avançado",
+    faixa: "Valores entre R$ 60 e R$ 90",
+    itens: [
+      { nome: "Cartoon", preco: 15, unidade: "unha" },
+      { nome: "Sanrio art", preco: 10, unidade: "unha" },
+      { nome: "Grid nails", preco: 5.5, unidade: "unha" },
+      { nome: "Trippy", preco: 8, unidade: "unha" },
+      { nome: "Flame nails", preco: 5, unidade: "unha" },
+      { nome: "Doodles", preco: 3.5, unidade: "unha" },
+      { nome: "Female alchemy", preco: 10, unidade: "unha" },
+    ],
+  },
+  {
+    nivel: "Extremas",
+    faixa: "Valores entre R$ 90 e R$ 120",
+    itens: [{ nome: "Arte extrema", preco: 90, unidade: "fixo", aPartirDe: true }],
+  },
+  {
+    nivel: "Charms",
+    faixa: "Valores por peça ou por unha",
+    itens: [
+      { nome: "Cruz", preco: 7.5, unidade: "peca" },
+      { nome: "Caviar", preco: 0.5, unidade: "unha" },
+      { nome: "Piercing", preco: 5, unidade: "peca" },
+      { nome: "Renda", preco: 5, unidade: "unha" },
+      { nome: "Correntes", preco: 2.5, unidade: "peca" },
+      { nome: "Personalizados", preco: 5, unidade: "peca" },
+      { nome: "3D feito à mão", preco: 10, unidade: "peca" },
+    ],
+  },
+];
+
+export const musica = {
+  faixa: "1KLHKVxCeUVOr0vcnVT84C",
+  titulo: "Favorite Girl",
+  artista: "Keara Alyse",
+};
+
 // Provisório: confirmar o valor com a Yas.
 export const sinalReais = 30;
 
@@ -37,9 +101,6 @@ export const navegacao = [
 ];
 
 export const portfolio = [
-  { src: "agenda-17", alt: "Unhas rosa com arte em 3D" },
-  { src: "agenda-05", alt: "Unhas vermelhas com listras pretas e brancas" },
-  { src: "agenda-31", alt: "Unhas com espirais douradas em relevo" },
   { src: "agenda-20", alt: "Unhas com arte azul e flor cartoon" },
   { src: "agenda-36", alt: "Unhas coloridas com desenhos em cada dedo" },
   { src: "agenda-27", alt: "Unhas vermelhas e douradas" },

@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode";
 import { contato, sinalReais } from "@/content/site";
-import { combinarServicos, formatarDuracao } from "@/lib/agenda/regras";
+import { codificarExtras, formatarDuracao } from "@/lib/agenda/regras";
 import { Calendario, TabelaHorarios } from "./Calendario";
+import { useReserva } from "./ContextoReserva";
 import styles from "./Agendamento.module.css";
 
 type Pix = { id: string; pixCode: string; minutos: number; valor: number };
@@ -17,9 +18,10 @@ function rotuloDia(data: string) {
 
 const moeda = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 
-export function Agendamento({ selecionados }: { selecionados: string[] }) {
+export function Agendamento() {
+  const { selecionados, extras, combinacao } = useReserva();
   const servicos = selecionados.join(",");
-  const combinacao = combinarServicos(selecionados);
+  const consulta = extras.length ? `${servicos}&extras=${codificarExtras(extras)}` : servicos;
   const sinal = Math.min(sinalReais, combinacao?.preco ?? sinalReais);
   const [data, setData] = useState("");
   const [horarios, setHorarios] = useState<string[] | null>(null);
@@ -50,13 +52,13 @@ export function Agendamento({ selecionados }: { selecionados: string[] }) {
     setHorarios(null);
     if (!servicos || !data) return;
     let ativo = true;
-    fetch(`/api/agenda/horarios?data=${data}&servicos=${servicos}`)
+    fetch(`/api/agenda/horarios?data=${data}&servicos=${consulta}`)
       .then((r) => r.json())
       .then((d) => ativo && setHorarios(d.horarios));
     return () => {
       ativo = false;
     };
-  }, [servicos, data, rodada]);
+  }, [consulta, data, rodada]);
 
   useEffect(() => {
     if (!pix) return;
@@ -76,7 +78,7 @@ export function Agendamento({ selecionados }: { selecionados: string[] }) {
     const resposta = await fetch("/api/agenda/reservas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ servicoIds: selecionados, data, hora, nome, telefone }),
+      body: JSON.stringify({ servicoIds: selecionados, extras, data, hora, nome, telefone }),
     });
     const corpo = await resposta.json();
     setEnviando(false);
@@ -167,7 +169,7 @@ export function Agendamento({ selecionados }: { selecionados: string[] }) {
 
             <fieldset>
               <legend>2. Dia</legend>
-              <Calendario servicos={servicos} data={data} rodada={rodada} aoEscolher={setData} />
+              <Calendario servicos={consulta} data={data} rodada={rodada} aoEscolher={setData} />
             </fieldset>
 
             {servicos && data && (

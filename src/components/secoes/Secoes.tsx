@@ -1,5 +1,8 @@
 import { contato, horarios, portfolio } from "@/content/site";
 import { IconeInstagram, IconeWhatsApp } from "@/components/ui/Icones";
+import { Musica } from "@/components/ui/Musica";
+import { CatalogoNailArt } from "./CatalogoNailArt";
+import { ReservaProvider } from "./ContextoReserva";
 import { Reserva } from "./Reserva";
 import styles from "./Secoes.module.css";
 
@@ -7,7 +10,7 @@ const faixa = "nail art ✦ 3D ✦ cartoon ✦ gel ✦ press on ✦ ";
 
 export function Secoes() {
   return (
-    <>
+    <ReservaProvider>
       <div className={styles.faixa} aria-hidden="true">
         <div>{faixa.repeat(12)}</div>
       </div>
@@ -21,18 +24,9 @@ export function Secoes() {
             </figure>
           ))}
         </div>
-        <a className={styles.botaoInstagram} href={contato.instagram}><IconeInstagram /> Ver mais no Instagram</a>
-      </section>
-
-      <section className={styles.artista}>
-        <img
-          src="/images/portfolio/Dctam-Ppb5m.webp"
-          alt="O estúdio, a artista e a arte: três fotos da Yas e do trabalho dela"
-          loading="lazy"
-        />
-        <div>
-          <h2><small>em busca do</small> <b>sucesso</b> <i>e consumida pela arte</i></h2>
-          <p>Yas Sampaio é nail artist em Jacarepaguá, RJ. Nail art, 3D e cartoon, com alongamentos em gel e press on.</p>
+        <div className={styles.acoes}>
+          <CatalogoNailArt />
+          <a className={styles.botaoInstagram} href={contato.instagram}><IconeInstagram /> Ver mais no Instagram</a>
         </div>
       </section>
 
@@ -67,11 +61,13 @@ export function Secoes() {
         <p><small>um</small> <b>artista</b> <small>é uma</small> <i>criança</i> <small>que</small> <b>insistiu</b></p>
       </footer>
 
+      <Musica />
+
       <div className={styles.barra}>
         <a className={styles.barraAgendar} href={contato.agendamento}>Agendar</a>
         <a className={styles.barraWhats} href={contato.whatsapp} aria-label="WhatsApp"><IconeWhatsApp /></a>
         <a className={styles.barraInsta} href={contato.instagram} aria-label="Instagram"><IconeInstagram /></a>
       </div>
-    </>
+    </ReservaProvider>
   );
 }
