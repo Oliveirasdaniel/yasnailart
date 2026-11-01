@@ -1,0 +1,251 @@
+.agendar {
+  padding: clamp(24px, 7vw, 90px) 10px clamp(48px, 9vw, 120px);
+  background: url("/texturas/organico.svg") center / 100% 100% no-repeat;
+}
+
+.painel {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 22px 14px;
+  border-radius: 28px;
+  background: var(--creme);
+}
+
+.painel h2 {
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: clamp(56px, 16vw, 96px);
+  line-height: 0.95;
+}
+
+.painel small {
+  display: block;
+  font-size: 18px;
+  font-weight: 900;
+  font-stretch: 125%;
+  text-transform: uppercase;
+}
+
+.painel b {
+  font-family: var(--font-titulo);
+  font-weight: 400;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form label,
+.form fieldset {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form span,
+.form legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.form label span {
+  margin: 0;
+}
+
+.form select,
+.form input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 2px solid var(--ameixa);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ameixa);
+  /* 16px evita o zoom automático do iPhone ao focar o campo. */
+  font: 600 16px var(--font-archivo), sans-serif;
+}
+
+.calendario table,
+.tabelaHoras {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.mes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.mes strong {
+  display: inline-block;
+  font-family: var(--font-caprasimo);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.mes strong::first-letter {
+  text-transform: uppercase;
+}
+
+.mes button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--ameixa);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.mes button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.calendario th,
+.tabelaHoras th {
+  padding: 8px 0;
+  border-bottom: 2px solid var(--ameixa);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.calendario abbr {
+  text-decoration: none;
+}
+
+.calendario td,
+.tabelaHoras td {
+  padding: 0;
+  border-bottom: 1px solid var(--bubblegum);
+  text-align: center;
+}
+
+.calendario td button,
+.tabelaHoras td button {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ameixa);
+  font: 800 16px var(--font-archivo), sans-serif;
+  cursor: pointer;
+}
+
+.calendario td button:disabled {
+  color: var(--ameixa);
+  font-weight: 400;
+  opacity: 0.32;
+  cursor: default;
+}
+
+.calendario td button[aria-current="date"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.calendario td button.ativo,
+.tabelaHoras td button.ativo {
+  background: var(--ameixa);
+  color: var(--creme);
+}
+
+.tabelaHoras td + td,
+.tabelaHoras th + th {
+  border-left: 1px solid var(--bubblegum);
+}
+
+.proximo {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 10px;
+  border: 0;
+  background: none;
+  color: var(--ameixa);
+  font: 700 15px var(--font-archivo), sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ameixa);
+  color: var(--creme);
+  font: 700 17px var(--font-archivo), sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao:disabled {
+  opacity: 0.7;
+}
+
+.erro {
+  margin: 0;
+  color: var(--carmim);
+  font-weight: 700;
+}
+
+.pix {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.pix p {
+  margin: 0;
+}
+
+.pix img {
+  border-radius: 14px;
+}
+
+.valor {
+  font-family: var(--font-caprasimo);
+  font-size: 28px;
+}
+
+.fim h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-caprasimo);
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.fim p {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+@media (min-width: 700px) {
+  .painel {
+    padding: 32px;
+  }
+}
+
+.escolhidos p {
+  margin: 6px 0;
+}
+
+.escolhidos a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}

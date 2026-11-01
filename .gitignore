@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.playwright-mcp/
+next-env.d.ts
+*.tsbuildinfo
+.dados/
+assets-brutos/

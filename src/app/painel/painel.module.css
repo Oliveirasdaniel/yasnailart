@@ -1,0 +1,283 @@
+.entrada {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 16px;
+  background: var(--bubblegum);
+}
+
+.entrada .cartao {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 380px);
+}
+
+.painel {
+  max-width: 760px;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 16px 12px 48px;
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.painel h1,
+.entrada h1 {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.cartao {
+  padding: 18px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.cartao h2 {
+  margin: 0 0 6px;
+  font-family: var(--font-caprasimo);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.cartao p {
+  margin: 0 0 6px;
+}
+
+.abas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 14px 0;
+  padding: 5px;
+  border-radius: 999px;
+  background: var(--bubblegum);
+}
+
+.abas a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.abas a[aria-current] {
+  background: var(--ameixa);
+  color: var(--creme);
+}
+
+.mes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mes a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.mes strong::first-letter {
+  text-transform: uppercase;
+}
+
+.mes strong {
+  display: inline-block;
+  font-family: var(--font-caprasimo);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.lista {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.quando {
+  color: var(--carmim);
+  font-weight: 800;
+}
+
+.selo {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--bubblegum);
+  font-weight: 700;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.concluir {
+  display: flex;
+  flex: 1 1 100%;
+  gap: 8px;
+}
+
+.concluir button {
+  flex: 1;
+}
+
+.primario,
+.secundario {
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font: 700 15px var(--font-archivo), sans-serif;
+  cursor: pointer;
+}
+
+.primario {
+  border: 0;
+  background: var(--ameixa);
+  color: var(--creme);
+}
+
+.secundario {
+  border: 2px solid var(--ameixa);
+  background: none;
+  color: var(--ameixa);
+}
+
+.discreto {
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ameixa);
+  font: 600 13px var(--font-archivo), sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.formulario {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.formulario label,
+.entrada label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  font-weight: 700;
+}
+
+.painel input,
+.painel select,
+.entrada input {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0 10px;
+  border: 2px solid var(--ameixa);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ameixa);
+  font: 600 16px var(--font-archivo), sans-serif;
+}
+
+.concluir select {
+  flex: 0 0 120px;
+  width: 120px;
+}
+
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.numeros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.numeros div {
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.numeros dt {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.numeros dd {
+  margin: 4px 0 0;
+  font-family: var(--font-caprasimo);
+  font-size: 22px;
+}
+
+.numeros .destaque {
+  background: var(--ameixa);
+  color: var(--creme);
+}
+
+.painel > section {
+  margin-bottom: 12px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: 10px 0;
+  border-top: 1px solid var(--bubblegum);
+  vertical-align: top;
+}
+
+.tabela th {
+  font-weight: 700;
+  text-align: left;
+}
+
+.tabela td {
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tabela small {
+  display: block;
+  font-weight: 400;
+}
+
+.saida {
+  color: var(--carmim);
+}
+
+.erro {
+  color: var(--carmim);
+  font-weight: 700;
+}

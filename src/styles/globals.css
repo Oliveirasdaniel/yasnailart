@@ -1,0 +1,30 @@
+:root {
+  --bubblegum: #f6b4ce;
+  --laranja: #fe520f;
+  --creme: #fff6d7;
+  --ameixa: #533746;
+  --pink: #fc78ac;
+  --pink-forte: #ec4884;
+  --carmim: #dc0454;
+  --degrade: radial-gradient(circle closest-side, #fe520f 0%, #fe6458 42%, #fe7ba5 74%, transparent 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--ameixa);
+  font-family: var(--font-archivo), sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--carmim);
+  outline-offset: 3px;
+}
