@@ -1,8 +1,7 @@
 .portfolio,
 .servicos,
 .pressOn,
-.contato,
-.rodape {
+.contato {
   padding: clamp(48px, 8vw, 110px) clamp(16px, 5vw, 72px);
 }
 
@@ -19,8 +18,7 @@
 .portfolio small,
 .servicos small,
 .pressOn small,
-.contato small,
-.rodape small {
+.contato small {
   display: block;
   font-size: clamp(16px, 2.4vw, 32px);
   font-weight: 900;
@@ -31,17 +29,9 @@
 .portfolio b,
 .servicos b,
 .pressOn b,
-.contato b,
-.rodape b {
+.contato b {
   font-family: var(--font-titulo);
   font-weight: 400;
-}
-
-.rodape i {
-  display: block;
-  color: var(--carmim);
-  font-family: var(--font-playball);
-  font-size: 0.45em;
 }
 
 .faixa {
@@ -303,6 +293,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+  padding-bottom: clamp(90px, 10vw, 110px);
 }
 
 .contato p {
@@ -330,19 +321,6 @@
 .contato dd {
   margin: 0;
   font-weight: 800;
-}
-
-.rodape {
-  overflow: hidden;
-  padding-bottom: clamp(90px, 10vw, 110px);
-  background: radial-gradient(circle at center, #fe520f 0%, #fe6458 30%, #fe7ba5 55%, var(--creme) 75%);
-  text-align: center;
-}
-
-.rodape p {
-  margin: 0;
-  font-size: clamp(56px, 11vw, 150px);
-  line-height: 1;
 }
 
 .categorias summary {

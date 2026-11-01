@@ -44,7 +44,6 @@ Telefone: +55 21 97064-5952. Mapa: https://www.google.com/maps/search/?api=1&que
 | 7 | Como funciona | Conteúdo do destaque "infos" do Instagram, a ser enviado |
 | 8 | Depoimentos | Prints e fotos das clientes, com autorização |
 | 9 | Contato | Mapa, WhatsApp e redes, com FAQ curto |
-| 10 | Encerramento | Cartaz "um artista é uma criança que insistiu" |
 
 Botão de WhatsApp fixo no celular em todas as seções.
 

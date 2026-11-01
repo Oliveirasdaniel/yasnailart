@@ -57,10 +57,6 @@ export function Secoes() {
         </dl>
       </section>
 
-      <footer className={styles.rodape}>
-        <p><small>um</small> <b>artista</b> <small>é uma</small> <i>criança</i> <small>que</small> <b>insistiu</b></p>
-      </footer>
-
       <Musica />
 
       <div className={styles.barra}>
